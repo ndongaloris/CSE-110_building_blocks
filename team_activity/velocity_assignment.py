@@ -1,0 +1,25 @@
+import math 
+print('Welcome to the velocity calculator. Please enter the following: ')
+mass = float(input('Mass (in kg): '))
+gravity = float(input('Gravity (in m/s^2, 9.8 for Earth, 24 for Jupiter): '))
+time = float(input('Time (in seconds): '))
+denstity = float(input('Density of the fluid (in kg/m^3, 1.3 for air, 1000 for water): '))
+cross = float(input('Cross sectional area (in m^2): '))
+drag = float(input('Drag constant (0.5 for sphere, 1.1 for cylinder): '))
+C = (1/2) * denstity * cross * drag
+velocity = math.sqrt(mass * gravity / C) * (1 - math.exp(- math.sqrt(mass * gravity * C) / mass * time))
+print(f'The inner value of c is: {C:.3f}')
+print(f'The velocity after 10.0 seconds is: {velocity:.3f} m/s')
+print()
+velocity_jupiter = math.sqrt(mass * 24 / C) * (1 - math.exp(- math.sqrt(mass * gravity * C) / mass * time))
+print(f'Did you know due to the fact that the gravity in Jupiter is 24 therefor the velocity is {velocity_jupiter:.3f} m/s!')
+print()
+radius_bowling = float ( input('Fun fact give me the radius of a bowling ball! '))
+area_bowling = math.pi * radius_bowling ** 2
+C2 = (1/2) * denstity * area_bowling * drag
+velocity_bowling = math.sqrt(mass * gravity / C2) * (1 - math.exp(- math.sqrt(mass * gravity * C2) / mass * time))
+print(f'A bowling ball falls at the speed of: {velocity_bowling:.3f} m/s')
+print()
+velocity_terminal = math.sqrt(mass * gravity / C2)
+print(f'Its max velocity is: {velocity_terminal:.3f} m/s')
+print()
